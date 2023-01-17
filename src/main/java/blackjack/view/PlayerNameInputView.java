@@ -9,15 +9,17 @@ public class PlayerNameInputView {
     private static final String PLAYER_NAME_DELIMITER = ",";
 
     public List<String> getPlayerNames() {
-        System.out.println(INPUT_PLAYER_NAME);
-        String inputNames = getInputNames();
-        // todo validate names
-        return TextParser.split(inputNames, PLAYER_NAME_DELIMITER);
+        showInputMessage();
+        return getInputNames();
     }
 
-    private static String getInputNames() {
+    private static void showInputMessage() {
+        System.out.println(INPUT_PLAYER_NAME);
+    }
+
+    private static List<String> getInputNames() {
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
-        return line;
+        return TextParser.split(line, PLAYER_NAME_DELIMITER);
     }
 }

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class TextParserTest {
+public class TextParserTest {
 
     @Test
     void splitWithDelimiterText() {
