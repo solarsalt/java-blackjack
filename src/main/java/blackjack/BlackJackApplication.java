@@ -1,5 +1,7 @@
 package blackjack;
 
+import blackjack.service.BlackJackGame;
+
 public class BlackJackApplication {
     public static void main(String[] args) {
         BlackJackGame blackJackGame = new BlackJackGame();
