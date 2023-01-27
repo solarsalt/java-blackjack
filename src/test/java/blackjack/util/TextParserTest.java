@@ -4,11 +4,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class TextParserTest {
 
     @Test
+    @DisplayName("정상적인 delimiter를 포함한 경우, 파싱 정상 동작")
     void splitWithDelimiterText() {
         //given
         String withComma = "with,comma";
@@ -21,6 +23,7 @@ public class TextParserTest {
     }
 
     @Test
+    @DisplayName("delimiter를 포함하지 않은 경우, 파싱 불가")
     void splitWithNoDelimiterText() {
         //given
         String withComma = "withoutcomma";

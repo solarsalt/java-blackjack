@@ -1,6 +1,5 @@
-package blackjack.domain;
+package blackjack.domain.member;
 
-import blackjack.service.PlayersValidator;
 import java.util.List;
 
 public class Players {
@@ -8,5 +7,9 @@ public class Players {
 
     public Players(List<Player> players) {
         this.players = players;
+    }
+
+    public List<Player> toList() {
+        return players;
     }
 }

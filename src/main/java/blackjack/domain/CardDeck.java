@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDeck {
-    private Cards cards;
+    private CardBundle cards;
+    private static final int STARTING_CARD_COUNT = 2;
 
-    private CardDeck(Cards cards) {
+    private CardDeck(CardBundle cards) {
         this.cards = cards;
     }
 
@@ -22,10 +23,14 @@ public class CardDeck {
                 cardDeck.add(new Card(suit, rank));
             }
         }
-        return new CardDeck(new Cards(cardDeck));
+        return new CardDeck(new CardBundle(cardDeck));
     }
 
-    public Cards getCards() {
+    public CardBundle getCards() {
         return cards;
+    }
+
+    public CardBundle pickStartingCardBundle() {
+        return cards.pickRandomCardsBy(STARTING_CARD_COUNT);
     }
 }

@@ -1,7 +1,6 @@
 package blackjack.service;
 
-import blackjack.domain.Player;
-import blackjack.domain.Players;
+import blackjack.domain.member.Player;
 import java.util.List;
 
 public class PlayersValidator {
@@ -9,7 +8,8 @@ public class PlayersValidator {
     private static final int MIN_PLAYERS_NUMBER = 2;
 
     public static boolean isValidPlayerNumber(List<Player> players) {
-        return (players.size() >= MIN_PLAYERS_NUMBER) && (players.size() <= MAX_PLAYERS_NUMBER);
+        return (players.size() >= MIN_PLAYERS_NUMBER)
+                && (players.size() <= MAX_PLAYERS_NUMBER);
     }
 
 }

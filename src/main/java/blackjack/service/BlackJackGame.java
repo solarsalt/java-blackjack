@@ -1,36 +1,35 @@
 package blackjack.service;
 
-import blackjack.domain.Player;
-import blackjack.domain.Players;
-import blackjack.service.PlayersValidator;
+import blackjack.domain.CardDeck;
+import blackjack.domain.CardBundle;
+import blackjack.domain.member.Dealer;
+import blackjack.domain.member.GameMember;
+import blackjack.domain.member.Players;
 import blackjack.view.OutputView;
-import blackjack.view.PlayerNameInputView;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class BlackJackGame {
     private Players players;
+    private Dealer dealer;
+    private CardDeck cardDeck;
 
     public void play() {
-        setPlayers();
+        players = new GamePlayersMaker().createPlayers();
+        dealer = new GamePlayersMaker().createDealer();
+        cardDeck = CardDeck.create52CardDeck();
+        pickStartingCards();
     }
-
-    private void setPlayers() {
-        while (true) {
-            List<Player> playersFromInput = getInputNames();
-            if (PlayersValidator.isValidPlayerNumber(playersFromInput)) {
-                players = new Players(playersFromInput);
-                break;
-            }
-            OutputView.showInvalidPlayersError();
-        }
-    }
-
-    private static List<Player> getInputNames() {
-        PlayerNameInputView playerNameInputView = new PlayerNameInputView();
-        return playerNameInputView.getPlayerNames()
-                .stream()
-                .map(Player::new)
-                .collect(Collectors.toList());
+    // todo 리팩토링 : GameMembers 를 players,dealer로 생성
+    //  picked CardBundle 을 받아서, 셀프로 모든 멤버의 addStartingCards 를 함
+    //  게임멤버가 멤버 전원의 이름을 리턴하고, OutputView는 텍스트 출력만 담당
+    private void pickStartingCards() {
+        List<GameMember> gameMembers = new ArrayList<>(players.toList());
+        gameMembers.add(dealer);
+        gameMembers.forEach(player -> {
+            CardBundle picked = cardDeck.pickStartingCardBundle();
+            player.addStartingCards(picked);
+        });
+        OutputView.showAllStartingCard(gameMembers);
     }
 }
