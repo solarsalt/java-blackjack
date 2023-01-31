@@ -32,7 +32,7 @@ class DealerTest {
     @DisplayName("딜러는 2장의 시작 카드를 받는다")
     void addStartingCards() {
         //when
-        dealer.addStartingCards(cardBundle);
+        dealer.pickStartingCards(cardBundle);
         //then
         assertEquals(2, dealer.getCardBundle().size());
     }
@@ -41,7 +41,7 @@ class DealerTest {
     @DisplayName("딜러의 시작 카드정보는 1개 카드정보만 노출")
     void getStartingCardInfo() {
         //when
-        dealer.addStartingCards(cardBundle);
+        dealer.pickStartingCards(cardBundle);
         String startingCardInfo = dealer.getStartingCardInfo();
         //then
         assertEquals("딜러 : 하트9", startingCardInfo);

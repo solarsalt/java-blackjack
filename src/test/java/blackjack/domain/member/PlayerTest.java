@@ -32,7 +32,7 @@ class PlayerTest {
     @DisplayName("플레이어는 2장의 시작 카드를 받는다")
     void addStartingCards() {
         //when
-        player.addStartingCards(cardBundle);
+        player.pickStartingCards(cardBundle);
         //then
         assertEquals(2, player.getCardBundle().size());
     }
@@ -41,7 +41,7 @@ class PlayerTest {
     @DisplayName("플레이어의 시작 카드 정보를 노출")
     void getStartingCardInfo() {
         //when
-        player.addStartingCards(cardBundle);
+        player.pickStartingCards(cardBundle);
         String startingCardInfo = player.getStartingCardInfo();
         //then
         assertEquals("tester : 하트9, 다이아몬드9",startingCardInfo);

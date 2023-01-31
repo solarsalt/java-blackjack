@@ -26,7 +26,7 @@ public class Player implements GameMember {
     }
 
     @Override
-    public void addStartingCards(CardBundle cards) {
+    public void pickStartingCards(CardBundle cards) {
         this.cardBundle = cards;
     }
 

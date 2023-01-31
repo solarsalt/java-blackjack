@@ -7,7 +7,7 @@ public interface GameMember {
 
     void moreCard();
 
-    void addStartingCards(CardBundle cards);
+    void pickStartingCards(CardBundle cards);
 
     String getStartingCardInfo();
 
