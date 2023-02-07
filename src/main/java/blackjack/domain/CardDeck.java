@@ -6,6 +6,7 @@ import java.util.List;
 public class CardDeck {
     private CardBundle cards;
     private static final int STARTING_CARD_COUNT = 2;
+    private static final int HIT_CARD_COUNT = 1;
 
     private CardDeck(CardBundle cards) {
         this.cards = cards;
@@ -32,5 +33,9 @@ public class CardDeck {
 
     public CardBundle pickStartingCardBundle() {
         return cards.pickRandomCardsBy(STARTING_CARD_COUNT);
+    }
+
+    public Card pickOne() {
+        return cards.pickRandomCardsBy(HIT_CARD_COUNT).toCard();
     }
 }

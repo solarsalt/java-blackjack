@@ -31,5 +31,9 @@ public class OutputView {
         String names = gameMembers.getGameMemberNames();
         printText(names + SHOW_STARTING_CARD);
     }
+
+    public static void showGameResult(GameMemberGroup gameMembers) {
+        // todo
+    }
 }
 

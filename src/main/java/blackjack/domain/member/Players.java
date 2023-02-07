@@ -12,4 +12,7 @@ public class Players {
     public List<Player> toList() {
         return players;
     }
+
+    public void hit() {
+    }
 }

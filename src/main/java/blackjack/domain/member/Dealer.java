@@ -1,5 +1,6 @@
 package blackjack.domain.member;
 
+import blackjack.domain.Card;
 import blackjack.domain.CardBundle;
 
 public class Dealer implements GameMember {
@@ -17,11 +18,6 @@ public class Dealer implements GameMember {
     }
 
     @Override
-    public void moreCard() {
-
-    }
-
-    @Override
     public void pickStartingCards(CardBundle cards) {
         this.cardBundle = cards;
     }
@@ -29,5 +25,23 @@ public class Dealer implements GameMember {
     @Override
     public String getStartingCardInfo() {
         return this.name + " : " + this.getCardBundle().getFirstCardInfo();
+    }
+
+    @Override
+    public void pickCard(Card card) {
+        cardBundle.add(card);
+    }
+
+    @Override
+    public boolean isDealer() {
+        return true;
+    }
+
+    @Override
+    public boolean isPlayer() {
+        return false;
+    }
+
+    public void hit() {
     }
 }

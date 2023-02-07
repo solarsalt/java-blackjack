@@ -15,12 +15,15 @@ public class BlackJackGame {
         players = new GamePlayersMaker().createPlayers();
         dealer = new GamePlayersMaker().createDealer();
         cardDeck = CardDeck.create52CardDeck();
-        pickStartingCards(players,dealer);
+        GameMemberGroup gameMemberGroup = new GameMemberGroup(players,dealer);
+        StartingCardStage startingCardStage = new StartingCardStage(gameMemberGroup, cardDeck);
+        startingCardStage.pickStartingCards();
+        hit();
+        OutputView.showGameResult(gameMemberGroup);
     }
 
-    private void pickStartingCards(Players players, Dealer dealer) {
-        GameMemberGroup gameMemberGroup = new GameMemberGroup(players,dealer);
-        gameMemberGroup.pickStartingCards(cardDeck);
-        OutputView.showAllStartingCard(gameMemberGroup);
+    private void hit() {
+        players.hit();
+        dealer.hit();
     }
 }

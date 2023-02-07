@@ -1,7 +1,9 @@
 package blackjack.domain;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.IllegalFormatException;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -36,5 +38,17 @@ public class CardBundle {
 
     public String getFirstCardInfo() {
         return this.cards.get(0).getCardInfo();
+    }
+
+    public void add(Card card) {
+        this.cards.add(card);
+    }
+
+    // todo 적절한 예외로 변경
+    public Card toCard() throws InvalidParameterException {
+        if(cards.size() == 1) {
+            return cards.get(0);
+        }
+        throw new InvalidParameterException();
     }
 }
