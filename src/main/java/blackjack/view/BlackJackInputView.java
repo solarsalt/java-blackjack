@@ -1,0 +1,41 @@
+package blackjack.view;
+
+import blackjack.domain.YesNoType;
+import blackjack.util.TextParser;
+import java.util.List;
+import java.util.Scanner;
+
+public class BlackJackInputView {
+    private static final String INPUT_PLAYER_NAME = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
+    private static final String PLAYER_NAME_DELIMITER = ",";
+    private static final String HIT_PROPOSAL = "pobi는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
+
+    public List<String> getPlayerNames() {
+        showInputMessage(INPUT_PLAYER_NAME);
+        return getInputNames();
+    }
+
+    private static void showInputMessage(String inputMessage) {
+        System.out.println(inputMessage);
+    }
+
+    private static List<String> getInputNames() {
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        return TextParser.split(line, PLAYER_NAME_DELIMITER);
+    }
+
+    public boolean getHit() {
+        showInputMessage(HIT_PROPOSAL);
+        String hitYn = getHitYn();
+        // todo validate
+        return hitYn.equals(YesNoType.Y);
+    }
+
+    private String getHitYn() {
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        // todo validate Y / N
+        return line;
+    }
+}

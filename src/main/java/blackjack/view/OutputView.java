@@ -16,10 +16,6 @@ public class OutputView {
         printText(card.getCardInfo());
     }
 
-    private static void printText(String text) {
-        System.out.println(text);
-    }
-
     public static void showAllStartingCard(GameMemberGroup gameMembers) {
         showGameMemberNames(gameMembers);
         for (GameMember gameMember : gameMembers.toList()) {
@@ -34,6 +30,10 @@ public class OutputView {
 
     public static void showGameResult(GameMemberGroup gameMembers) {
         // todo
+    }
+
+    private static void printText(String text) {
+        System.out.println(text);
     }
 }
 

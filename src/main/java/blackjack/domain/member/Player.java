@@ -45,4 +45,8 @@ public class Player implements GameMember {
     public boolean isPlayer() {
         return true;
     }
+
+    public void hit() {
+        // todo
+    }
 }

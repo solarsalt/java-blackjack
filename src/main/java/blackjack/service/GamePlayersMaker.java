@@ -4,7 +4,7 @@ import blackjack.domain.member.Dealer;
 import blackjack.domain.member.Player;
 import blackjack.domain.member.Players;
 import blackjack.view.OutputView;
-import blackjack.view.PlayerNameInputView;
+import blackjack.view.BlackJackInputView;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,8 +21,8 @@ public class GamePlayersMaker {
     }
 
     private static List<Player> createFromInputNames() {
-        PlayerNameInputView playerNameInputView = new PlayerNameInputView();
-        return playerNameInputView.getPlayerNames()
+        BlackJackInputView blackJackInputView = new BlackJackInputView();
+        return blackJackInputView.getPlayerNames()
                 .stream()
                 .map(Player::new)
                 .collect(Collectors.toList());
