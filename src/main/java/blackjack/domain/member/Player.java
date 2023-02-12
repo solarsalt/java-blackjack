@@ -1,7 +1,8 @@
 package blackjack.domain.member;
 
-import blackjack.domain.Card;
-import blackjack.domain.CardBundle;
+import blackjack.domain.YesNoType;
+import blackjack.domain.card.Card;
+import blackjack.domain.card.CardBundle;
 
 public class Player implements GameMember {
     private String name;
@@ -46,7 +47,8 @@ public class Player implements GameMember {
         return true;
     }
 
-    public void hit() {
-        // todo
+    @Override
+    public String getAllCardInfo() {
+        return this.name + " : " + this.getCardBundle().getAllCardInfo();
     }
 }

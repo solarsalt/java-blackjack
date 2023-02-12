@@ -1,7 +1,7 @@
 package blackjack.domain.member;
 
-import blackjack.domain.Card;
-import blackjack.domain.CardBundle;
+import blackjack.domain.card.Card;
+import blackjack.domain.card.CardBundle;
 
 public interface GameMember {
     CardBundle getCardBundle();
@@ -13,6 +13,8 @@ public interface GameMember {
     String getStartingCardInfo();
 
     String getName();
+
+    String getAllCardInfo();
 
     boolean isDealer();
 

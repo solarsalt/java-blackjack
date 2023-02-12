@@ -1,7 +1,10 @@
 package blackjack.domain.member;
 
+import blackjack.domain.YesNoType;
+import blackjack.domain.card.CardDeck;
 import blackjack.view.BlackJackInputView;
 import blackjack.view.OutputView;
+
 import java.util.List;
 
 public class Players {
@@ -15,16 +18,35 @@ public class Players {
         return players;
     }
 
-    public void hit() {
-        players.stream()
-                .forEach(
-                        player -> {
-                            BlackJackInputView blackJackInputView = new BlackJackInputView();
-                            boolean isHit = blackJackInputView.getHit();
-                            player.hit();
-                            // y이면, pick
-                            // n이면, 종료
-                        }
-                );
+    public void hit(CardDeck cardDeck) {
+        players.forEach(player -> {
+                    hitTurn(cardDeck, player);
+                }
+        );
+    }
+
+    //todo 이사
+    private void hitTurn(CardDeck cardDeck, Player player) {
+        while (true) {
+            YesNoType hit = getHit(player);
+            if (hit.isYes()) {
+                player.pickCard(cardDeck.pickOne());
+            } else {
+                return;
+            }
+        }
+    }
+
+    //todo 이사
+    private YesNoType getHit(Player player) {
+        while (true) {
+            String inputHit = BlackJackInputView.getInputHit(player.getName());
+            String yesNoInput = inputHit.toUpperCase();
+            boolean isValidYn = YesNoType.contains(yesNoInput);
+            if (isValidYn) {
+                return YesNoType.valueOf(yesNoInput);
+            }
+            OutputView.showInvalidHitError();
+        }
     }
 }

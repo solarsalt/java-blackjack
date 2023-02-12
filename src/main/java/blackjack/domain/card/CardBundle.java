@@ -1,12 +1,12 @@
-package blackjack.domain;
+package blackjack.domain.card;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.IllegalFormatException;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
+
+import static java.lang.Long.sum;
 
 public class CardBundle {
     private List<Card> cards;
@@ -46,9 +46,31 @@ public class CardBundle {
 
     // todo 적절한 예외로 변경
     public Card toCard() throws InvalidParameterException {
-        if(cards.size() == 1) {
+        if (cards.size() == 1) {
             return cards.get(0);
         }
         throw new InvalidParameterException();
+    }
+
+    public int calculateTotalScore() {
+        int sumWithoutAce = getSumWithoutAce();
+        int aceScore = getAceScore(sumWithoutAce);
+        return Integer.sum(sumWithoutAce, aceScore);
+    }
+
+    private int getSumWithoutAce() {
+        int sumWithoutAce = cards.stream()
+                .filter(card -> !card.isAce())
+                .mapToInt(Card::getNormalScore)
+                .sum();
+        return sumWithoutAce;
+    }
+
+    private int getAceScore(int sumWithoutAce) {
+        int aceScore = cards.stream()
+                .filter(Card::isAce)
+                .mapToInt(card -> card.getAceScore(sumWithoutAce))
+                .sum();
+        return aceScore;
     }
 }

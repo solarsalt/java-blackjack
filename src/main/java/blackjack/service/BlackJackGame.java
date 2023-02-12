@@ -1,6 +1,6 @@
 package blackjack.service;
 
-import blackjack.domain.CardDeck;
+import blackjack.domain.card.CardDeck;
 import blackjack.domain.member.Dealer;
 import blackjack.domain.member.GameMemberGroup;
 import blackjack.domain.member.Players;
@@ -16,14 +16,14 @@ public class BlackJackGame {
         dealer = new GamePlayersMaker().createDealer();
         cardDeck = CardDeck.create52CardDeck();
         GameMemberGroup gameMemberGroup = new GameMemberGroup(players,dealer);
-        StartingCardStage startingCardStage = new StartingCardStage(gameMemberGroup, cardDeck);
-        startingCardStage.pickStartingCards();
-        hit();
+        StartingCardPicker startingCardPicker = new StartingCardPicker(gameMemberGroup, cardDeck);
+        startingCardPicker.pickStartingCards();
+        hit(cardDeck);
         OutputView.showGameResult(gameMemberGroup);
     }
 
-    private void hit() {
-        players.hit();
-        dealer.hit();
+    private void hit(CardDeck cardDeck) {
+        players.hit(cardDeck);
+        dealer.hit(cardDeck);
     }
 }

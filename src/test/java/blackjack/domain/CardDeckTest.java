@@ -2,7 +2,7 @@ package blackjack.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import blackjack.view.OutputView;
+import blackjack.domain.card.CardDeck;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

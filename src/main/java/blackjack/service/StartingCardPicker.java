@@ -1,15 +1,15 @@
 package blackjack.service;
 
-import blackjack.domain.CardDeck;
+import blackjack.domain.card.CardDeck;
 import blackjack.domain.member.GameMemberGroup;
 import blackjack.view.OutputView;
 
-public class StartingCardStage {
+public class StartingCardPicker {
     private GameMemberGroup gameMemberGroup;
     private CardDeck cardDeck;
 
-    public StartingCardStage(GameMemberGroup gameMemberGroup,
-                             CardDeck cardDeck) {
+    public StartingCardPicker(GameMemberGroup gameMemberGroup,
+                              CardDeck cardDeck) {
         this.gameMemberGroup = gameMemberGroup;
         this.cardDeck = cardDeck;
     }

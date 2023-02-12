@@ -2,7 +2,7 @@ package blackjack.domain.member;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import blackjack.domain.CardDeck;
+import blackjack.domain.card.CardDeck;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
