@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardBundle;
-import blackjack.domain.Rank;
-import blackjack.domain.Suit;
+import blackjack.domain.card.Rank;
+import blackjack.domain.card.Suit;
 import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;

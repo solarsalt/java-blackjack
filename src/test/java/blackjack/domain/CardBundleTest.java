@@ -2,6 +2,8 @@ package blackjack.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import blackjack.domain.card.Rank;
+import blackjack.domain.card.Suit;
 import java.util.List;
 
 import blackjack.domain.card.Card;

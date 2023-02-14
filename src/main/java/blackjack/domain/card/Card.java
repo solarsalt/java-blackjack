@@ -1,10 +1,5 @@
 package blackjack.domain.card;
 
-import blackjack.domain.Rank;
-import blackjack.domain.Suit;
-
-import java.util.function.ToIntFunction;
-
 public class Card {
     private Suit suit;
     private Rank rank;
