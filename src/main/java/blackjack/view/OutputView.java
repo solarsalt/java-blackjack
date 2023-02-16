@@ -2,8 +2,7 @@ package blackjack.view;
 
 import blackjack.domain.member.GameMember;
 import blackjack.domain.member.GameMemberGroup;
-import blackjack.domain.result.DealerResult;
-import blackjack.domain.result.PlayerResult;
+import blackjack.domain.result.GameResultReport;
 import blackjack.service.GameResultJudge;
 
 public class OutputView {
@@ -28,17 +27,13 @@ public class OutputView {
     }
 
     public static void showTotalScore(GameMemberGroup gameMembers) {
-        for (GameMember gameMember: gameMembers.toList()){
-            printText(gameMember.getAllCardInfo()
-                    + "- 결과: "
-                    + gameMember.getCardBundle().calculateTotalScore());
+        for (GameMember gameMember : gameMembers.toList()) {
+            printText(gameMember.getAllCardInfo() + gameMember.getScoreInfo());
         }
     }
 
-    public static void showGameResult(GameResultJudge gameResultJudge) {
-        PlayerResult playerResult = gameResultJudge.getPlayerResult();
-        gameResultJudge.getDealerResult();
-        gameResultJudge.getPlayerResult();
+    public static void showGameResult(GameResultReport gameResultReport) {
+        printText(gameResultReport.report());
     }
 
     public static void showInvalidHitError() {

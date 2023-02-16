@@ -31,5 +31,4 @@ public class GamePlayersMaker {
     public Dealer createDealer() {
         return new Dealer();
     }
-
 }

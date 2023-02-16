@@ -16,10 +16,11 @@ public class BlackJackGame {
         dealer = new GamePlayersMaker().createDealer();
         cardDeck = CardDeck.create52CardDeck();
         GameMemberGroup gameMemberGroup = new GameMemberGroup(players, dealer);
-        StartingCardPicker startingCardPicker = new StartingCardPicker(gameMemberGroup, cardDeck);
-        startingCardPicker.pickStartingCards();
+        StartingCardStage startingCardStage = new StartingCardStage(gameMemberGroup, cardDeck);
+        startingCardStage.pickStartingCards();
         hit(cardDeck);
-        showResult(gameMemberGroup);
+        showScores(gameMemberGroup);
+        showResults(players,dealer);
     }
 
     private void hit(CardDeck cardDeck) {
@@ -27,9 +28,14 @@ public class BlackJackGame {
         dealer.hit(cardDeck);
     }
 
-    private static void showResult(GameMemberGroup gameMemberGroup) {
+    private static void showScores(GameMemberGroup gameMemberGroup) {
+        ScoreRecorder scoreRecorder = new ScoreRecorder(gameMemberGroup);
+        scoreRecorder.record();
         OutputView.showTotalScore(gameMemberGroup);
-        GameResultJudge gameResultJudge = new GameResultJudge(gameMemberGroup);
-        OutputView.showGameResult(gameResultJudge);
+    }
+
+    private void showResults(Players players, Dealer dealer) {
+        GameResultJudge gameResultJudge = new GameResultJudge(dealer, players);
+        OutputView.showGameResult(gameResultJudge.judgeGamResult());
     }
 }

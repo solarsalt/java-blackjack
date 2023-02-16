@@ -2,10 +2,12 @@ package blackjack.domain.member;
 
 import blackjack.domain.YesNoType;
 import blackjack.domain.card.CardDeck;
+import blackjack.domain.result.PlayerResult;
 import blackjack.view.BlackJackInputView;
 import blackjack.view.OutputView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Players {
     private List<Player> players;
@@ -48,5 +50,11 @@ public class Players {
             }
             OutputView.showInvalidHitError();
         }
+    }
+
+    public List<PlayerResult> getResults(Integer dealerScore) {
+        return players.stream()
+                .map(player -> new PlayerResult(player, player.winOrLose(dealerScore)))
+                .collect(Collectors.toList());
     }
 }

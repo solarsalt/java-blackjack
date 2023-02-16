@@ -16,7 +16,13 @@ public interface GameMember {
 
     String getAllCardInfo();
 
+    Integer getScore();
+
     boolean isDealer();
 
     boolean isPlayer();
+
+    void recordScore(int totalScore);
+
+    String getScoreInfo();
 }
