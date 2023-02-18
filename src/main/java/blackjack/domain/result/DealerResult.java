@@ -12,7 +12,7 @@ public class DealerResult {
     public String report() {
         long winCount = getSameResultCount(GameResult.WIN);
         long loseCount = getSameResultCount(GameResult.LOSE);
-        long drawCount = getSameResultCount(GameResult.LOSE);
+        long drawCount = getSameResultCount(GameResult.DRAW);
         return "딜러: " + winCount + GameResult.WIN.getDescription()
                 + loseCount + GameResult.LOSE.getDescription()
                 + drawCount + GameResult.DRAW.getDescription();

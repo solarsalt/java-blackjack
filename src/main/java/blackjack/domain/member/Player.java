@@ -1,15 +1,15 @@
 package blackjack.domain.member;
 
-import blackjack.domain.YesNoType;
 import blackjack.domain.card.Card;
 import blackjack.domain.card.CardBundle;
 import blackjack.domain.result.GameResult;
-import blackjack.domain.result.GameResultReport;
 
 public class Player implements GameMember {
     private String name;
     private CardBundle cardBundle;
     private Integer score = 0;
+    /* 버스트 룰에 따라 플레이어 카드 점수합이 21을 초과하면, 버스트로 플레이어가 패함 */
+    private final static Integer BUST_RULE_SCORE = 21;
 
     public Player(String name) {
         this.name = name;
@@ -71,7 +71,10 @@ public class Player implements GameMember {
     }
 
     public GameResult winOrLose(int dealerScore) {
-        if(dealerScore < this.score) {
+        if (this.score > BUST_RULE_SCORE) {
+            return GameResult.LOSE;
+        }
+        if (dealerScore < this.score) {
             return GameResult.WIN;
         }
         if (dealerScore > this.score) {

@@ -20,10 +20,11 @@ public class GameResultReport {
     }
 
     public String report() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(dealerResult.report());
-        for (PlayerResult playerResult:playerResults) {
-            stringBuilder.append(playerResult.report());
+        String lineBreak = "\n";
+        StringBuilder stringBuilder = new StringBuilder("## 최종 승패\n");
+        stringBuilder.append(dealerResult.report() + lineBreak);
+        for (PlayerResult playerResult : playerResults) {
+            stringBuilder.append(playerResult.report() + lineBreak);
         }
         return stringBuilder.toString();
     }

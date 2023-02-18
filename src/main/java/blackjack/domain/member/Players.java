@@ -1,6 +1,6 @@
 package blackjack.domain.member;
 
-import blackjack.domain.YesNoType;
+import blackjack.view.YesNoType;
 import blackjack.domain.card.CardDeck;
 import blackjack.domain.result.PlayerResult;
 import blackjack.view.BlackJackInputView;
