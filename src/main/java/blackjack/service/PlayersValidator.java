@@ -1,6 +1,7 @@
 package blackjack.service;
 
 import blackjack.domain.member.Player;
+
 import java.util.List;
 
 public class PlayersValidator {

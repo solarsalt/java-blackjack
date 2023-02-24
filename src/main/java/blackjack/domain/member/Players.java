@@ -21,13 +21,9 @@ public class Players {
     }
 
     public void hit(CardDeck cardDeck) {
-        players.forEach(player -> {
-                    hitTurn(cardDeck, player);
-                }
-        );
+        players.forEach(player -> hitTurn(cardDeck, player));
     }
 
-    //todo 이사
     private void hitTurn(CardDeck cardDeck, Player player) {
         while (true) {
             YesNoType hit = getHit(player);
@@ -39,7 +35,6 @@ public class Players {
         }
     }
 
-    //todo 이사
     private YesNoType getHit(Player player) {
         while (true) {
             String inputHit = BlackJackInputView.getInputHit(player.getName());

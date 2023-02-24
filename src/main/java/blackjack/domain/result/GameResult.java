@@ -3,8 +3,7 @@ package blackjack.domain.result;
 public enum GameResult {
     WIN("승"),
     LOSE("패"),
-    DRAW("무")
-    ;
+    DRAW("무");
     private final String description;
 
     GameResult(String description) {
@@ -12,10 +11,10 @@ public enum GameResult {
     }
 
     public GameResult getOpponentResult() {
-        if(this == WIN) {
+        if (this == WIN) {
             return LOSE;
         }
-        if(this == LOSE) {
+        if (this == LOSE) {
             return WIN;
         }
         return DRAW;

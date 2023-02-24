@@ -2,6 +2,7 @@ package blackjack.domain.member;
 
 import blackjack.domain.card.CardBundle;
 import blackjack.domain.card.CardDeck;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,7 +15,7 @@ public class GameMemberGroup {
         this.gameMembers.add(dealer);
     }
 
-    public void pickStartingCards(CardDeck cardDeck){
+    public void pickStartingCards(CardDeck cardDeck) {
         gameMembers.forEach(gameMember -> {
             CardBundle picked = cardDeck.pickStartingCardBundle();
             gameMember.pickStartingCards(picked);
@@ -31,8 +32,8 @@ public class GameMemberGroup {
         return gameMembers;
     }
 
-    public void recordScores(){
-        for (GameMember gameMember: gameMembers){
+    public void recordScores() {
+        for (GameMember gameMember : gameMembers) {
             int totalScore = gameMember.getCardBundle().calculateTotalScore();
             gameMember.recordScore(totalScore);
         }

@@ -22,7 +22,7 @@ public class GameResultReport {
     public String report() {
         String lineBreak = "\n";
         StringBuilder stringBuilder = new StringBuilder("## 최종 승패\n");
-        stringBuilder.append(dealerResult.report() + lineBreak);
+        stringBuilder.append(dealerResult.report()).append(lineBreak);
         for (PlayerResult playerResult : playerResults) {
             stringBuilder.append(playerResult.report() + lineBreak);
         }

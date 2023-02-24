@@ -1,6 +1,7 @@
 package blackjack.view;
 
 import blackjack.util.TextParser;
+
 import java.util.List;
 import java.util.Scanner;
 

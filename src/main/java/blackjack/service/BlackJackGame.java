@@ -9,24 +9,28 @@ import blackjack.view.OutputView;
 public class BlackJackGame {
     private Players players;
     private Dealer dealer;
-    private CardDeck cardDeck;
+
+    public BlackJackGame(Players players, Dealer dealer) {
+        this.players = players;
+        this.dealer = dealer;
+    }
 
     public void play() {
-        players = new GamePlayersMaker().createPlayers();
-        dealer = new GamePlayersMaker().createDealer();
-        cardDeck = CardDeck.create52CardDeck();
         GameMemberGroup gameMemberGroup = new GameMemberGroup(players, dealer);
-        StartingCardStage startingCardStage = new StartingCardStage(gameMemberGroup, cardDeck);
-        startingCardStage.pickStartingCards();
-        hit(cardDeck);
+        CardDeck cardDeck = CardDeck.create52CardDeck();
+        playCard(gameMemberGroup, cardDeck);
+
         showScores(gameMemberGroup);
-        showResults(players,dealer);
+        showResults(players, dealer);
     }
 
-    private void hit(CardDeck cardDeck) {
-        players.hit(cardDeck);
-        dealer.hit(cardDeck);
+    private void playCard(GameMemberGroup gameMemberGroup, CardDeck cardDeck) {
+        StartingCardStage startingCardStage = new StartingCardStage(gameMemberGroup, cardDeck);
+        startingCardStage.pickStartingCards();
+        HitStage hitStage = new HitStage(players, dealer);
+        hitStage.hit(cardDeck);
     }
+
 
     private static void showScores(GameMemberGroup gameMemberGroup) {
         ScoreRecorder scoreRecorder = new ScoreRecorder(gameMemberGroup);

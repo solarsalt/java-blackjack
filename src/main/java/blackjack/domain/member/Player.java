@@ -41,16 +41,6 @@ public class Player implements GameMember {
     }
 
     @Override
-    public boolean isDealer() {
-        return false;
-    }
-
-    @Override
-    public boolean isPlayer() {
-        return true;
-    }
-
-    @Override
     public void recordScore(int totalScore) {
         this.score = totalScore;
     }

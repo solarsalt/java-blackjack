@@ -18,10 +18,6 @@ public interface GameMember {
 
     Integer getScore();
 
-    boolean isDealer();
-
-    boolean isPlayer();
-
     void recordScore(int totalScore);
 
     String getScoreInfo();

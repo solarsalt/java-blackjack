@@ -1,17 +1,14 @@
 package blackjack.domain;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import blackjack.domain.card.Rank;
-import blackjack.domain.card.Suit;
-import java.util.List;
-
-import blackjack.domain.card.Card;
-import blackjack.domain.card.CardBundle;
-import blackjack.domain.card.CardDeck;
+import blackjack.domain.card.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class CardBundleTest {
     CardBundle cardBundle;
@@ -21,7 +18,7 @@ class CardBundleTest {
     void initCardBundle() {
         heart = new Card(Suit.HEART, Rank.NINE);
         Card diamond = new Card(Suit.DIAMOND, Rank.NINE);
-        cardBundle = new CardBundle(List.of(heart, diamond));
+        cardBundle = new CardBundle(new ArrayList<>(List.of(heart, diamond)));
     }
 
     @Test
@@ -57,9 +54,31 @@ class CardBundleTest {
         assertEquals(heart.getCardInfo(), firstCardInfo);
     }
 
-    //todo
     @Test
+    @DisplayName("2개의 카드번들에 새로운 카드 1개를 추가")
     void add() {
+        //given
+        Card spade = new Card(Suit.SPADE, Rank.NINE);
+        //when
+        cardBundle.add(spade);
+        //then
+        assertEquals(3, cardBundle.size());
+    }
 
+    @Test
+    @DisplayName("카드번들의 카드가 1개가 아닐때, toCard 불가능")
+    void toCardFail() {
+        assertThrowsExactly(IllegalStateException.class, () ->
+                cardBundle.toCard());
+    }
+
+    @Test
+    @DisplayName("카드번들의 카드가 1개이면, 카드로 변환 성공")
+    void toCardSuccess() {
+        //given
+        Card diamond = new Card(Suit.DIAMOND, Rank.NINE);
+        CardBundle oneCard = new CardBundle(new ArrayList<>(List.of(diamond)));
+        //when,then
+        assertDoesNotThrow(oneCard::toCard);
     }
 }

@@ -40,16 +40,6 @@ public class Dealer implements GameMember {
     }
 
     @Override
-    public boolean isDealer() {
-        return true;
-    }
-
-    @Override
-    public boolean isPlayer() {
-        return false;
-    }
-
-    @Override
     public void recordScore(int totalScore) {
         this.score = totalScore;
     }
@@ -60,7 +50,7 @@ public class Dealer implements GameMember {
     }
 
     public void hit(CardDeck cardDeck) {
-        if(cardBundle.calculateTotalScore() <= DEALER_HIT_SCORE_MIN) {
+        if (cardBundle.calculateTotalScore() <= DEALER_HIT_SCORE_MIN) {
             pickCard(cardDeck.pickOne());
         }
     }
