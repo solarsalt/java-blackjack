@@ -1,10 +1,9 @@
 package blackjack.domain.member;
 
-import blackjack.view.YesNoType;
 import blackjack.domain.card.CardDeck;
 import blackjack.domain.result.PlayerResult;
 import blackjack.view.BlackJackInputView;
-import blackjack.view.OutputView;
+import blackjack.view.YesNoType;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,24 +25,12 @@ public class Players {
 
     private void hitTurn(CardDeck cardDeck, Player player) {
         while (true) {
-            YesNoType hit = getHit(player);
+            YesNoType hit = BlackJackInputView.getHitYesNo(player.getName());
             if (hit.isYes()) {
                 player.pickCard(cardDeck.pickOne());
             } else {
                 return;
             }
-        }
-    }
-
-    private YesNoType getHit(Player player) {
-        while (true) {
-            String inputHit = BlackJackInputView.getInputHit(player.getName());
-            String yesNoInput = inputHit.toUpperCase();
-            boolean isValidYn = YesNoType.contains(yesNoInput);
-            if (isValidYn) {
-                return YesNoType.valueOf(yesNoInput);
-            }
-            OutputView.showInvalidHitError();
         }
     }
 

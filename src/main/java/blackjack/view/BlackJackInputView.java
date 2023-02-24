@@ -25,7 +25,19 @@ public class BlackJackInputView {
         return TextParser.split(line, PLAYER_NAME_DELIMITER);
     }
 
-    public static String getInputHit(String name) {
+    public static YesNoType getHitYesNo(String playerName) {
+        while (true) {
+            String inputHit = getInputHit(playerName);
+            String yesNoInput = inputHit.toUpperCase();
+            boolean isValidYn = YesNoType.contains(yesNoInput);
+            if (isValidYn) {
+                return YesNoType.valueOf(yesNoInput);
+            }
+            OutputView.showInvalidHitError();
+        }
+    }
+
+    private static String getInputHit(String name) {
         showInputMessage(name + HIT_PROPOSAL);
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();
